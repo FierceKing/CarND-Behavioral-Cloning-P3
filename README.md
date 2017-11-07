@@ -102,22 +102,22 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 The final model architecture (`learn_tfrecords_final.py` lines 126-138) consisted of a convolution neural network with the following layers and layer sizes. It's actually almost the same like NVIDIA PilotNet. The input shape is (76, 32, 3) and in YUV color space.
 
 ```ruby
-	model = Sequential()
-	model.add(BatchNormalization(epsilon=0.001, axis=-1, input_shape=(nrows, ncols, 3)))
-	model.add(Conv2D(24, (5, 5), strides=(2, 2), activation='relu'))
-	model.add(Conv2D(36, (5, 5), strides=(2, 2), activation='relu'))
-	model.add(Conv2D(48, (5, 5), strides=(2, 2), activation='relu'))
-	model.add(Conv2D(64, (3, 3), strides=(1, 1), activation='relu'))
-	model.add(Conv2D(64, (3, 3), strides=(1, 1), activation='relu'))
-	model.add(Flatten())
-	model.add(Dense(1164, activation='relu'))
-	model.add(Dense(100, activation='relu'))
-	model.add(Dense(50, activation='relu'))
-	model.add(Dense(10, activation='relu'))
-	model.add(Dense(1, activation='tanh'))
+model = Sequential()
+model.add(BatchNormalization(epsilon=0.001, axis=-1, input_shape=(nrows, ncols, 3)))
+model.add(Conv2D(24, (5, 5), strides=(2, 2), activation='relu'))
+model.add(Conv2D(36, (5, 5), strides=(2, 2), activation='relu'))
+model.add(Conv2D(48, (5, 5), strides=(2, 2), activation='relu'))
+model.add(Conv2D(64, (3, 3), strides=(1, 1), activation='relu'))
+model.add(Conv2D(64, (3, 3), strides=(1, 1), activation='relu'))
+model.add(Flatten())
+model.add(Dense(1164, activation='relu'))
+model.add(Dense(100, activation='relu'))
+model.add(Dense(50, activation='relu'))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(1, activation='tanh'))
 ```
 
-####3. Creation of the Training Set & Training Process
+#### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I woundn't want to spend too much time on practicing driving the simulater, so I used data provided by udacity.Here is an example image of center lane driving:
 
